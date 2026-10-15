@@ -74,15 +74,7 @@ html{background:var(--g1)}body{background:none!important;min-height:100vh}body::
 <div id="v"></div></div><div id="t"></div>
 <script>
 // ==== SEM VLOŽ SVOJE FIREBASE NASTAVENÍ (viz README.md, krok 2) ====
-const firebase_Config = {
-  apiKey: "AIzaSyBcDbetm-8klmEuN6_gbeFpkdv5gvTqBRE",
-  authDomain: "luckypokedex-efadc.firebaseapp.com",
-  projectId: "luckypokedex-efadc",
-  storageBucket: "luckypokedex-efadc.firebasestorage.app",
-  messagingSenderId: "895060088024",
-  appId: "1:895060088024:web:7c63c51495ed9c324d73ad",
-  measurementId: "G-H4ZD94TD49"
-};
+const FIREBASE_CONFIG={apiKey:"AIzaSy…",authDomain:"tvuj-projekt.firebaseapp.com",projectId:"tvuj-projekt",storageBucket:"tvuj-projekt.appspot.com",messagingSenderId:"123456789",appId:"1:123456789:web:abc123"};
 // =====================================================================
 async function initFB(){if(!FIREBASE_CONFIG.apiKey||FIREBASE_CONFIG.apiKey=="VLOZ_SEM")return null;firebase.initializeApp(FIREBASE_CONFIG);const fs=firebase.firestore();fs.enablePersistence({synchronizeTabs:true}).catch(()=>{});
 return{doc:p=>({set:o=>fs.doc(p).set(JSON.parse(JSON.stringify(o)))}),collection:c=>({onSnapshot:(f,e)=>fs.collection(c).onSnapshot(s=>f({docs:s.docs.map(d=>({id:d.id,data:()=>d.data()}))}),e)})}}
